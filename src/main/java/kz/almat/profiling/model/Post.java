@@ -11,20 +11,21 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "post")
+@Table(name = "P_POST")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "P_POST_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(sequenceName = "P_POST_ID_SEQ", name = "P_POST_SEQ", allocationSize = 1)
     private Long id;
 
-    @Column
+    @Column(name = "P_TOPIC", nullable = false)
     private String topic;
 
-    @Column
+    @Column(name = "P_MESSAGE", nullable = false)
     private String message;
 
 }
